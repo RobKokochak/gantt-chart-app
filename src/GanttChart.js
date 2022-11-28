@@ -1,7 +1,7 @@
 const GanttChart = () => {
   return ( 
     <div className="gantt-chart">
-      <h1>gantt chart goes here</h1>
+      <h1>gantt chart</h1>
     </div>
    );
 }

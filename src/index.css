@@ -5,3 +5,18 @@
   font-family: "Roboto", sans-serif;
   color: #333;
 }
+
+.user-input {
+  text-align: center;
+  background-color: #eee;
+}
+
+.task-list {
+  text-align: center;
+  background-color: #eee;
+}
+
+.gantt-chart {
+  text-align: center;
+  background-color: #eee;
+}
