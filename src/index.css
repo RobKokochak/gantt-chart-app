@@ -6,17 +6,31 @@
   color: #333;
 }
 
+.content {
+  padding: 1em;
+}
+
 .user-input {
   text-align: center;
   background-color: #eee;
+  border-radius: 1.5em;
+  padding: 1em;
+}
+
+.user-input p {
+  text-align: left;
 }
 
 .task-list {
   text-align: center;
   background-color: #eee;
+  border-radius: 1.5em;
+  padding: 1em;
 }
 
 .gantt-chart {
   text-align: center;
   background-color: #eee;
+  border-radius: 1.5em;
+  padding: 1em;
 }
