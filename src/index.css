@@ -11,10 +11,14 @@
 }
 
 .user-input {
-  text-align: center;
+  text-align: right;
   background-color: #eee;
   border-radius: 1.5em;
   padding: 1em;
+}
+
+.user-input h1 {
+  text-align: center;
 }
 
 .user-input p {
@@ -33,4 +37,16 @@
   background-color: #eee;
   border-radius: 1.5em;
   padding: 1em;
+}
+
+.title-author-form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.task-details-form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
 }
