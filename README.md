@@ -1,3 +1,10 @@
+# Steps to Run
+
+1. run `npm install` to install dependencies
+2. run `npm start` to start it up in your browser
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
