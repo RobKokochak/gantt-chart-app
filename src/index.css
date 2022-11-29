@@ -1,28 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+body {
+  background: rgb(39, 44, 68)
+}
+
 * {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Outfit", sans-serif;
   color: #333;
+}
+
+.task {
+  display: flex;
 }
 
 .content {
   padding: 1em;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
-.user-input {
+.task-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.task-form-boxes {
+  display: flex;
+  flex-direction: column;;
+}
+
+.task-form p {
+  display: block;
+  text-align: center;
+  padding-bottom: .5em;
+}
+
+.top-left-box {
   text-align: right;
   background-color: #eee;
   border-radius: 1.5em;
-  padding: 1em;
+  padding: 2em;
 }
 
-.user-input h1 {
+.top-left-box h1 {
   text-align: center;
 }
 
-.user-input p {
+.top-left-box p {
   text-align: left;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .task-list {
@@ -40,13 +69,16 @@
 }
 
 .title-author-form-field {
-  display: flex;
-  flex-direction: column;
-  margin: 1em;
+  
 }
 
-.task-details-form-field {
-  display: flex;
-  flex-direction: column;
-  margin: 1em;
+.input-box fieldset{
+  border-radius: 5rem;
+  fontSize: large;
+}
+
+.project-details {
+  display: block;
+  text-align: center;
+  padding-bottom: .5em;
 }
