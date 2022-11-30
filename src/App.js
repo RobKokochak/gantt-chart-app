@@ -23,12 +23,9 @@ const App = () => {
 	}, []);
 
 	// saves the tasks into local storage using the LOCAL_STORAGE_KEY
-	useEffect(
-		() => {
+	useEffect(() => {
 			localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
-		},
-		[ tasks ]
-	);
+		}, [tasks]);
 
 	const addTask = task => setTasks([ task, ...tasks ]);
 	
