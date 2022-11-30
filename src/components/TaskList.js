@@ -1,5 +1,4 @@
 import Task from './Task';
-//import Typography from '@material-ui/core/Typography';
 
 const TaskList = ({ tasks, removeTask }) => {
 	return (

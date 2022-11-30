@@ -12,8 +12,12 @@ const TaskForm = ({ addTask }) => {
 	const [ task, setTaskValue ] = useState({
 		id: '',
 		taskName: '',
+		resource: '',
 		startDate: null,
-		duration: ''
+		endDate: null,
+		duration: 0,
+		percentComplete: 0,
+		dependencies: ''
 	});
 
 	const handleTaskInputChange = e => {
