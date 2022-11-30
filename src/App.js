@@ -1,14 +1,14 @@
 import GanttChart from "./components/GanttChart";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
-import UserInput from "./components/UserInput";
+import ProjectDetails from "./components/ProjectDetails"
 import { Grid } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState,useEffect } from "react";
 
 const LOCAL_STORAGE_KEY = 'react-gantt-chart-tasks';
 
-function App() {
+const App = () => {
 
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -30,13 +30,9 @@ function App() {
 		[ tasks ]
 	);
 
-	function addTask(task) {
-		setTasks([ task, ...tasks ]);
-	}
-
-	function removeTask(id) {
-		setTasks(tasks.filter((task) => task.id !== id));
-	}
+	const addTask = task => setTasks([ task, ...tasks ]);
+	
+	const removeTask = id => setTasks(tasks.filter((task) => task.id !== id));
 
   return (
     <div className="App">
@@ -47,7 +43,7 @@ function App() {
             <h1>Gantt Chart Maker</h1>
             <p>This tool allows you to generate a Gantt chart given a set of task, start dates, and durations, Fill out the information below to get started.</p>
               <Stack container spacing={2}>
-                <UserInput title={title} setTitle={setTitle} author={author} setAuthor={setAuthor}/>
+                <ProjectDetails title={title} setTitle={setTitle} author={author} setAuthor={setAuthor}/>
                 <TaskForm addTask={addTask} />
               </Stack>
             </div>

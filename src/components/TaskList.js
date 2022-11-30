@@ -1,8 +1,7 @@
-import React from 'react';
 import Task from './Task';
 //import Typography from '@material-ui/core/Typography';
 
-function TaskList({ tasks, removeTask }) {
+const TaskList = ({ tasks, removeTask }) => {
 	console.log(tasks);
 	return (
 		<div className="task-list">

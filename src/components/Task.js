@@ -1,11 +1,8 @@
-import React from 'react';
 import { IconButton } from '@mui/material';
 import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
 
-function Task({ task, removeTask }) {
-	function handleRemoveClick() {
-		removeTask(task.id);
-	}
+const Task = ({ task, removeTask }) => {
+	const handleRemoveClick = () => removeTask(task.id);
 
 	return (
 		<div className="task">

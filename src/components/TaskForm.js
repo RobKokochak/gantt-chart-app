@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Stack } from '@mui/material';
 import { TextField } from '@mui/material';
@@ -7,7 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
-function TaskForm({ addTask }) {
+const TaskForm = ({ addTask }) => {
 	const [ task, setTaskValue ] = useState({
 		id: '',
 		taskName: '',
@@ -15,13 +15,13 @@ function TaskForm({ addTask }) {
 		duration: ''
 	});
 
-	function handleTaskInputChange(e) {
+	const handleTaskInputChange = e => {
 		const value = e.target.value;
 		setTaskValue({ ...task, [e.target.name]: value });
 	}
 
 	// handles the task list when the add button is pressed
-	function handleSubmit(e) {
+	const handleSubmit = e => {
 		e.preventDefault();
 		if (task.taskName.trim()) {
 			//adds the task to the list and gives it a unique id using uuid package
