@@ -6,10 +6,8 @@ const Task = ({ task, removeTask }) => {
 
 	return (
 		<div className="task">
-			<ul>Task: {task.taskName}</ul>
-			<ul>Start Date: {task.startDate}</ul>
-			<ul>Duration: {task.duration}</ul>
-			<IconButton aria-label="delete" onClick={handleRemoveClick} size="small">
+			<div>Task: {task.taskName} Start Date: {task.startDate} Duration: {task.duration}</div>
+			<IconButton aria-label="delete" onClick={handleRemoveClick} size="large">
 				<RemoveCircleRoundedIcon fontSize="inherit" />
 			</IconButton>
 		</div>

@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 const UserInput = ({ title, setTitle, author, setAuthor }) => {
 
   return ( 
-    <div className="project-details">
+    <div className="inner-container">
           <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Stack spacing={1}>

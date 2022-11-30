@@ -1,8 +1,8 @@
 const GanttChart = ({ title, author }) => {
   return ( 
-    <div className="gantt-chart">
+    <div>
       <h1>{ title }</h1>
-      <p>{ author }</p>
+      <>{ author }</>
     </div>
    );
 }

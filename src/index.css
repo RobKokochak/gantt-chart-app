@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
-  background: rgb(39, 44, 68)
-}
-
-* {
-  margin: 0;
-  font-family: "Outfit", sans-serif;
-  color: #333;
-}
-
-.task {
-  display: flex;
+  background: rgb(39, 44, 68);
 }
 
 .content {
@@ -20,60 +10,64 @@ body {
   padding-right: 10%;
 }
 
-.task-form {
-  display: flex;
-  flex-direction: column;
-  margin: 1em;
+* {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
 }
 
-.task-form-boxes {
-  display: flex;
-  flex-direction: column;
-}
-
-.task-form p {
-  display: block;
+.container {
   text-align: center;
-  padding-bottom: .5em;
-}
-
-.top-left-box {
-  text-align: right;
-  background-color: #eee;
+  background: rgba(92, 103, 140, 0.4);
+  color: rgb(255, 255, 255);
+  backdrop-filter: blur(2px);
   border-radius: 1.5em;
-  padding: 2em;
+  padding: 1.5em;
 }
 
-.top-left-box h1 {
+.container h1{
   text-align: center;
 }
 
-.top-left-box p {
+.container p {
   text-align: left;
   padding-left: 2em;
   padding-right: 2em;
+  padding-bottom: 1em;
 }
 
-.task-list {
+.container h4 {
   text-align: center;
-  background-color: #eee;
-  border-radius: 1.5em;
-  padding: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: .5em;
 }
 
-.gantt-chart {
+.inner-container {
   text-align: center;
-  background-color: #eee;
+  background: rgba(92, 103, 140, 0.4);
+  backdrop-filter: blur(2px);
   border-radius: 1.5em;
-  padding: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.task {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .input-box fieldset{
-  border-radius: 5rem;
+  border-radius: 1.5em;
 }
 
-.project-details {
-  display: block;
-  text-align: center;
-  padding-top: 1em;
+.right {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 0;
 }

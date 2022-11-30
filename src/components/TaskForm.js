@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { InputAdornment } from '@mui/material';
 
 const TaskForm = ({ addTask }) => {
 	const [ task, setTaskValue ] = useState({
@@ -37,22 +38,23 @@ const TaskForm = ({ addTask }) => {
 	console.log(JSON.stringify(task.startDate).slice(1, 11));
 
 	return (
-		<div className="task-form">
+		<div className="container">
 			<form onSubmit={handleSubmit}>
-				<p>ADD NEW TASK:</p>
-				<div className="task-form-boxes">
+				<h4>ADD NEW TASK:</h4>
+				<div>
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
 						<Stack spacing={1}>
 							<TextField
+								sx={{ input: { color: 'white', } }}
 								className='input-box'
 								label="Task Name"
 								name="taskName"
 								value={task.taskName}
 								size="small"
 								onChange={handleTaskInputChange}
+								endAdornment={<InputAdornment position="end">kg</InputAdornment>}
 							/>
 							<MobileDatePicker
-								//disablePast //disables old dates
 								className='input-box'
 								label="Start Date"
 								inputFormat="MM/DD/YYYY"
@@ -70,9 +72,9 @@ const TaskForm = ({ addTask }) => {
 								size="small"
 								onChange={handleTaskInputChange}
 							/>
-							<p2>
+							<div className="right">
 								<Button type="submit" variant="contained" size="small" style={{ borderRadius: 50 }}>ADD</Button>
-							</p2>
+							</div>
 						</Stack>	
 					</LocalizationProvider>
 				</div>

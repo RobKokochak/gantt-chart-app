@@ -12,7 +12,7 @@ const App = () => {
 
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [ tasks, setTasks ] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   // recalls the tasks from local storage using the LOCAL_STORAGE_KEY
 	useEffect(() => {
@@ -39,7 +39,7 @@ const App = () => {
       <div className="content">
         <Grid container spacing={1}>
           <Grid item xs={6}>
-            <div className="top-left-box">
+            <div className="container">
             <h1>Gantt Chart Maker</h1>
             <p>This tool allows you to generate a Gantt chart given a set of task, start dates, and durations, Fill out the information below to get started.</p>
               <Stack container spacing={2}>
@@ -49,10 +49,15 @@ const App = () => {
             </div>
           </Grid>
           <Grid item xs={6}>
-            <TaskList tasks={tasks} removeTask={removeTask}/>
+            <div className="container">
+              <h4>TASKS:</h4>
+              <TaskList tasks={tasks} removeTask={removeTask}/>
+            </div>
           </Grid>
           <Grid item xs={12}>
-            <GanttChart title={title} author={author}/>
+            <div className="container">
+              <GanttChart title={title} author={author}/>
+            </div>
           </Grid>
         </Grid>
       </div>
