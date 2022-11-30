@@ -41,7 +41,7 @@ const App = () => {
           <Grid item xs={6}>
             <div className="container">
             <h1>Gantt Chart Maker</h1>
-            <p>This tool allows you to generate a Gantt chart given a set of task, start dates, and durations, Fill out the information below to get started.</p>
+            <p>This tool allows you to generate a Gantt chart given a set of tasks, start dates, and durations. Fill out the information below to get started.</p>
               <Stack container spacing={2}>
                 <ProjectDetails title={title} setTitle={setTitle} author={author} setAuthor={setAuthor}/>
                 <TaskForm addTask={addTask} />
