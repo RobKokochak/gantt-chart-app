@@ -28,7 +28,7 @@ body {
 
 .task-form-boxes {
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
 }
 
 .task-form p {
@@ -68,17 +68,12 @@ body {
   padding: 1em;
 }
 
-.title-author-form-field {
-  
-}
-
 .input-box fieldset{
   border-radius: 5rem;
-  fontSize: large;
 }
 
 .project-details {
   display: block;
   text-align: center;
-  padding-bottom: .5em;
+  padding-top: 1em;
 }
