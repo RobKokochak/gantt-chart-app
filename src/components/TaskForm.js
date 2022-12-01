@@ -7,15 +7,15 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 const TaskForm = ({ addTask }) => {
 	const [ task, setTaskValue ] = useState({
-		id: '',
-		taskName: '',
-		resource: '',
-		startDate: null,
-		endDate: null,
-		duration: 0,
-		percentComplete: 0,
-		dependencies: ''
-	});
+	id: "",
+	taskName: "",
+	resource: "",
+	startDate: null,
+	endDate: null,
+	duration: '',
+	percentComplete: 0,
+	dependencies: null
+});
 
 	const handleTaskInputChange = e => {
 		const value = e.target.value;
@@ -25,18 +25,21 @@ const TaskForm = ({ addTask }) => {
 	// handles the task list when the add button is pressed
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (task.taskName.trim()) {
-			//adds the task to the list and gives it a unique id using uuid package
-			addTask({ ...task, id: uuidv4() });
+		if ((task.taskName.trim()) && (task.startDate != null) && (task.duration > 0)) {
+			//adds the task to the list with a generated unique ID
+			task.duration = parseInt(task.duration, 10);
+			task.duration = task.duration * 24 * 60 * 60 * 1000;
+
+			addTask({ ...task, id: uuidv4()});
 
 			// reset task form boxes to become empty
 			setTaskValue({ ...task, taskName: '', startDate: null, duration: '' });
 		}
+		// else ERROR to user
 	}
 
 	// debugging statements that output the task and task array to the console
 	console.log(task);
-	console.log(JSON.stringify(task.startDate).slice(1, 11));
 
 	return (
 		<div className="container">
@@ -46,14 +49,14 @@ const TaskForm = ({ addTask }) => {
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
 						<Stack spacing={1}>
 							<TextField
-								sx={{ input: { color: 'white', } }}
+								// sx={{ input: { color: 'white', } }}
+								// autoComplete='false'
 								className='input-box'
 								label="Task Name"
 								name="taskName"
 								value={task.taskName}
 								size="small"
 								onChange={handleTaskInputChange}
-								endAdornment={<InputAdornment position="end">kg</InputAdornment>}
 							/>
 							<MobileDatePicker
 								className='input-box'
@@ -61,12 +64,13 @@ const TaskForm = ({ addTask }) => {
 								inputFormat="MM/DD/YYYY"
 								value={task.startDate}
 								onChange={(newValue) => {
-									setTaskValue({ ...task, startDate: JSON.stringify(newValue).slice(1, 11) });
+									setTaskValue({ ...task, startDate: newValue });
 								}}
 								renderInput={(params) => <TextField size='small'{...params} />}
 							/>
 							<TextField
 								className='input-box'
+								type="number"
 								label="Duration"
 								name="duration"
 								value={task.duration}

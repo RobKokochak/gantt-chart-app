@@ -1,4 +1,4 @@
-import GanttChart from "./components/GanttChart";
+import Gantt from "./components/Gantt";
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import ProjectDetails from "./components/ProjectDetails"
@@ -9,9 +9,8 @@ import { useState,useEffect } from "react";
 const LOCAL_STORAGE_KEY = 'react-gantt-chart-tasks';
 
 const App = () => {
-
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('Project Title');
+  const [author, setAuthor] = useState('Author');
   const [tasks, setTasks] = useState([]);
 
   // recalls the tasks from local storage using the LOCAL_STORAGE_KEY
@@ -28,18 +27,18 @@ const App = () => {
 		}, [tasks]);
 
 	const addTask = task => setTasks([ task, ...tasks ]);
-	
+
 	const removeTask = id => setTasks(tasks.filter((task) => task.id !== id));
 
   return (
     <div className="App">
       <div className="content">
-        <Grid container spacing={1}>
+        <Grid className="whole-grid" container direction='row' spacing={1} alignItems="stretch">
           <Grid item xs={6}>
             <div className="container">
             <h1>Gantt Chart Maker</h1>
-            <p>This tool allows you to generate a Gantt chart given a set of tasks, start dates, and durations. Fill out the information below to get started.</p>
-              <Stack container spacing={2}>
+            <p>This tool allows you to generate a Gantt chart given a set of task, start dates, and durations, Fill out the information below to get started.</p>
+              <Stack container="true" spacing={2}>
                 <ProjectDetails title={title} setTitle={setTitle} author={author} setAuthor={setAuthor}/>
                 <TaskForm addTask={addTask} />
               </Stack>
@@ -53,7 +52,7 @@ const App = () => {
           </Grid>
           <Grid item xs={12}>
             <div className="container">
-              <GanttChart title={title} author={author}/>
+              <Gantt tasks={tasks} title={title} author={author}/>
             </div>
           </Grid>
         </Grid>
