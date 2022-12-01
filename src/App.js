@@ -52,6 +52,10 @@ const App = () => {
           </Grid>
           <Grid item xs={12}>
             <div className="container">
+              <div>
+                <h1>{title}</h1>
+                <>{author}</>
+               </div>
               <Gantt tasks={tasks} title={title} author={author}/>
             </div>
           </Grid>
