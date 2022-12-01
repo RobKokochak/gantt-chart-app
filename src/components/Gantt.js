@@ -50,7 +50,7 @@ const GanttChart = ({ tasks, title, author }) => {
     ],
   ];
 
-  const data = [columns, ...tasks];
+  const data = [columns, ...rows];
 
   const options = {
     height: 400,

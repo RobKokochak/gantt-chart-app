@@ -6,8 +6,16 @@ import { FixedSizeList } from 'react-window';
 import { Paper } from '@mui/material';
 
 const TaskList = ({ tasks, removeTask }) => {
+
+	//sorts the tasks array by date
+	tasks.sort(function compare(a, b) {
+		var dateA = new Date(a.startDate);
+		var dateB = new Date(b.startDate);
+		return dateA - dateB;
+	  });
+
 	console.log(tasks);
-	//sort the array
+	
 	return (
 		<Paper style={{ maxHeight: 470, overflow: 'auto', borderRadius: 25}}>
 			<List className="inner-container" sx={{ width: '100%', bgcolor: 'rgba(92, 103, 140, 0.4)' }}>
@@ -15,6 +23,8 @@ const TaskList = ({ tasks, removeTask }) => {
 			</List>
 		</Paper>
 	);
+	
 }
+
 
 export default TaskList;
