@@ -55,6 +55,8 @@ const GanttChart = ({ tasks }) => {
     },
   };
 
+  // FIX ME DEBUGGER
+
   if (tasksObjectsToGantt[0] != null) {
     return (
       <div>
