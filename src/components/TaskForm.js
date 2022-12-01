@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Stack, TextField, Button, InputAdornment } from '@mui/material';
+import { Stack, TextField, Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
-const TaskForm = ({ addTask }) => {
-	const [ task, setTaskValue ] = useState({
+const defaultValues = {
 	id: "",
 	taskName: "",
 	resource: "",
@@ -15,7 +14,10 @@ const TaskForm = ({ addTask }) => {
 	duration: '',
 	percentComplete: 0,
 	dependencies: null
-});
+}
+
+const TaskForm = ({ addTask }) => {
+	const [ task, setTaskValue ] = useState(defaultValues);
 
 	const handleTaskInputChange = e => {
 		const value = e.target.value;
@@ -29,6 +31,10 @@ const TaskForm = ({ addTask }) => {
 			//adds the task to the list with a generated unique ID
 			task.duration = parseInt(task.duration, 10);
 			task.duration = task.duration * 24 * 60 * 60 * 1000;
+
+			let startDateString = JSON.stringify(task.startDate).slice(1, 11);
+			let parts = startDateString.split('-');
+			task.startDate = new Date(parts[0], parts[1] - 1, parts[2]); 
 
 			addTask({ ...task, id: uuidv4()});
 
