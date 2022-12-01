@@ -1,5 +1,4 @@
-import { Grid, TextField } from "@mui/material";
-import { Stack } from '@mui/material';
+import { Grid, TextField, Stack } from "@mui/material";
 
 const UserInput = ({ title, setTitle, author, setAuthor }) => {
 

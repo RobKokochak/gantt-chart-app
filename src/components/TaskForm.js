@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Stack } from '@mui/material';
-import { TextField } from '@mui/material';
-import { Button } from '@mui/material';
+import { Stack, TextField, Button, InputAdornment } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'; 
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 const TaskForm = ({ addTask }) => {
 	const [ task, setTaskValue ] = useState({
