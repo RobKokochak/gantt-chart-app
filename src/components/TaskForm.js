@@ -30,11 +30,11 @@ const TaskForm = ({ addTask }) => {
 		if ((task.taskName.trim()) && (task.startDate != null) && (task.duration > 0)) {
 			//adds the task to the list with a generated unique ID
 			task.duration = parseInt(task.duration, 10);
-			task.duration = task.duration * 24 * 60 * 60 * 1000;
+			task.duration = task.duration * 24 * 60 * 60 * 1000; 
 
 			let startDateString = JSON.stringify(task.startDate).slice(1, 11);
 			let parts = startDateString.split('-');
-			task.startDate = new Date(parts[0], parts[1] - 1, parts[2]); 
+			task.startDate = new Date(parts[0], parts[1] - 1, parts[2]);
 
 			addTask({ ...task, id: uuidv4()});
 
