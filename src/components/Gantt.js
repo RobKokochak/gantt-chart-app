@@ -2,8 +2,22 @@ import { Chart } from "react-google-charts";
 
 const GanttChart = ({ tasks }) => {
 
-  // Converting Object array to an Array of arrays  
+  // Converting Object array to an Array of arrays  (first step of converting localStorage date string to something Google Gantt can read)
   const tasksObjectsToGantt = tasks.map( Object.values );
+
+  // This function converts the broken date string after page reload to something the Google Gantt component can read
+  const convertDateToGanttFormat = (arr) => {
+    if (arr.length > 0){
+      for (let i = 0; i < arr.length; i++){
+        let temp = arr[i][3];
+        temp = JSON.stringify(temp).slice(1, 11);
+        let parts = temp.split('-');
+        arr[i][3] = new Date(parts[0], parts[1] - 1, parts[2]);
+      }
+    };
+  }
+
+  convertDateToGanttFormat(tasksObjectsToGantt);
   console.log(tasksObjectsToGantt);
 
   const columns = [
