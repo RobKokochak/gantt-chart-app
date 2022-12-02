@@ -17,6 +17,15 @@ const GanttChart = ({ tasks }) => {
     };
   }
 
+  const convertDurationToGanttFormat = (arr) => {
+    if (arr.length > 0){
+      for (let i = 0; i < arr.length; i++){
+			  arr[i][5] = arr[i][5] * 24 * 60 * 60 * 1000;
+      }
+    }
+  }
+
+  convertDurationToGanttFormat(tasksObjectsToGantt);
   convertDateToGanttFormat(tasksObjectsToGantt);
   console.log(tasksObjectsToGantt);
 
@@ -65,7 +74,7 @@ const GanttChart = ({ tasks }) => {
   const options = {
     height: 400,
     gantt: {
-      trackHeight: 30,
+      trackHeight: 60,
     },
   };
 
