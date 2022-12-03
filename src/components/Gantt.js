@@ -41,6 +41,7 @@ const GanttChart = ({ tasks }) => {
   ];
 
   // TEST PURPOSES ONLY
+  // change line 73 "const data = [columns, ...{{{{{tasksObjectsToGantt}}}}];" and insert rows into tasksObjectsToGantt
 
   // const daysToMilliseconds = (days) => {
   //   return days * 24 * 60 * 60 * 1000;
@@ -73,9 +74,16 @@ const GanttChart = ({ tasks }) => {
 
   const options = {
     height: 400,
-    gantt: {
-      trackHeight: 60,
+    backgroundColor: {
     },
+    gantt: {
+      criticalPathEnabled: false,
+      percentEnabled: false,
+      trackHeight: 40,
+    },
+    labelStyle: {
+      color: '#FFFFFF'
+    }
   };
 
   // FIX ME DEBUGGER
@@ -83,7 +91,7 @@ const GanttChart = ({ tasks }) => {
   if (tasksObjectsToGantt[0] != null) {
     return (
       <div>
-        <div className="container">
+        <div className="inner-container">
           <Chart
             chartType="Gantt"
             width="100%"
@@ -97,8 +105,8 @@ const GanttChart = ({ tasks }) => {
     else {
       return (
         <div>
-        <div className="container">
-          <h4>(Submit a task to get started with the Gantt chart.)</h4>
+        <div className="inner-container">
+          <h4>Submit a task to get started with the Gantt chart.</h4>
         </div>
       </div>
       )

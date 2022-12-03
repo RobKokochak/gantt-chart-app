@@ -1,15 +1,31 @@
 import { IconButton } from '@mui/material';
 import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
+import { Stack } from "@mui/system";
 
 const Task = ({ task, removeTask }) => {
 	const handleRemoveClick = () => removeTask(task.id);
 
+	// converts date from 2022-2-14 to 2/14/2022
+	const correctFormattedDate = (date) => {
+		let temp = date;
+        temp = JSON.stringify(temp).slice(1, 11);
+        let parts = temp.split('-');
+        temp = `${parts[1]}/${parts[2]}/${parts[0]}`;
+		return temp;
+	}
+
 	return (
 		<div className="task">
-			<div>Task: {task.taskName} Start Date: {JSON.stringify(task.startDate).slice(1, 11)} Duration: {parseInt(task.duration, 10)} days</div>
-			<IconButton aria-label="delete" onClick={handleRemoveClick} size="large">
-				<RemoveCircleRoundedIcon fontSize="inherit" />
-			</IconButton>
+			<div className="task-details">
+				Task: {task.taskName}
+				<br />Start Date: {correctFormattedDate(task.startDate)}
+				<br />Duration: {parseInt(task.duration, 10)} days
+			</div>
+			<div className="vertical-center">
+				<IconButton aria-label="delete" onClick={handleRemoveClick} size="large">
+					<RemoveCircleRoundedIcon fontSize="inherit" />
+				</IconButton>
+			</div>
 		</div>
 	);
 }
