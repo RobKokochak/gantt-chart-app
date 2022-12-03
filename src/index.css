@@ -1,28 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-body {
-  background: rgb(39, 44, 68);
-}
-
-.content {
-  padding: 1em;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
 * {
   margin: 0;
   font-family: "Outfit", sans-serif;
 }
 
+body {
+  background: radial-gradient(100% 100% at 5% 90%, rgba(250, 0, 255, 0.252) 0%, rgba(0, 0, 0, 0) 100%), radial-gradient(66.25% 131.01% at 102.29% 13.33%, rgba(29, 201, 255, 0.268) 0%, rgba(0, 0, 0, 0) 100%), #141734;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  padding: 1rem;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .container {
   text-align: center;
-  background: rgba(92, 103, 140, 0.4);
-  color: rgb(255, 255, 255);
-  backdrop-filter: blur(2px);
-  border-radius: 1.5em;
-  padding: 1.5em;
-  max-height: 91%;
+  background: #5C678C66;
+  color: #FFFFFF;
+  backdrop-filter: blur(2rpx);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  height: 28.5rem;
+  overflow: auto;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
 }
 
 .container h1{
@@ -31,39 +45,94 @@ body {
 
 .container p {
   text-align: left;
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-bottom: 1em;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
 }
 
 .container h4 {
   text-align: center;
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-bottom: .5em;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: .5rem;
 }
 
 .inner-container {
   text-align: center;
-  background: rgba(92, 103, 140, 0.4);
+  background: #5C678C66;
   backdrop-filter: blur(2px);
-  border-radius: 1.5em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+
+.tasklist-container {
+  position: relative;
+  text-align: center;
+  background: #5C678C66;
+  backdrop-filter: blur(2px);
+  border-radius: 1.5rem;
+  height: 24.8rem;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.tasklist-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tasklist-wrapper {
+  text-align: center;
+  height: 23rem;
+  border-radius: 1.5rem;
+  overflow: auto;
+}
+
+.tasklist-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.gantt-container {
+  text-align: center;
+  background: #5C678C66;
+  color: #FFFFFF;
+  backdrop-filter: blur(2rpx);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  height: 28;
+}
+
+.gantt-container h1{
+  text-align: center;
+}
+
+.gantt-container p {
+  text-align: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
 }
 
 .task {
-  align-items: center;
+  background: #5C678C66;
+  color: #FFFFFF;
+  backdrop-filter: blur(2rpx);
+  border-radius: 1rem;
   display: flex;
-  flex-direction: row;
-  padding-left: 1em;
-  padding-right: 1em;
+  justify-content: space-between;
+  padding: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  height: 3.3rem;
+}
+
+.task-details {
+  text-align: left;
+  max-height: 415px;
+  overflow: hidden;
 }
 
 .input-box fieldset{
-  border-radius: 1.5em;
+  border-radius: 1.5rem;
 }
 
 .right {
@@ -71,4 +140,15 @@ body {
   justify-content: flex-end;
   margin-left: auto;
   margin-right: 0;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

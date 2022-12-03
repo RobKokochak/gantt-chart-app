@@ -30,6 +30,8 @@ const App = () => {
 
 	const removeTask = id => setTasks(tasks.filter((task) => task.id !== id));
 
+  const removeAllTasks = () => setTasks([]);
+
   return (
     <div className="App">
       <div className="content">
@@ -38,7 +40,7 @@ const App = () => {
             <div className="container">
             <h1>Gantt Chart Maker</h1>
             <p>This tool allows you to generate a Gantt chart given a set of task, start dates, and durations, Fill out the information below to get started.</p>
-              <Stack container="true" spacing={2}>
+              <Stack container="true" spacing={1.5}>
                 <ProjectDetails title={title} setTitle={setTitle} author={author} setAuthor={setAuthor}/>
                 <TaskForm addTask={addTask} />
               </Stack>
@@ -46,16 +48,14 @@ const App = () => {
           </Grid>
           <Grid item xs={6}>
             <div className="container">
-              <h4>TASKS:</h4>
-              <TaskList tasks={tasks} removeTask={removeTask}/>
+              <h4>TASKS: {tasks.length}</h4>
+              <TaskList tasks={tasks} removeTask={removeTask} removeAllTasks={removeAllTasks}/>
             </div>
           </Grid>
           <Grid item xs={12}>
-            <div className="container">
-              <div>
-                <h1>{title}</h1>
-                <>{author}</>
-               </div>
+            <div className="gantt-container">
+              <h1>{title}</h1>
+              <p>{author}</p>
               <Gantt tasks={tasks} title={title} author={author}/>
             </div>
           </Grid>
