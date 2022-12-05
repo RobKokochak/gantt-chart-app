@@ -22,6 +22,7 @@ body::-webkit-scrollbar {
   padding: 1rem;
   padding-left: 10%;
   padding-right: 10%;
+  scrollbar-width: none;
 }
 
 .container {
@@ -33,6 +34,7 @@ body::-webkit-scrollbar {
   padding: 1.5rem;
   height: 28.5rem;
   overflow: auto;
+  scrollbar-width: none;
 }
 
 .container::-webkit-scrollbar {
@@ -85,6 +87,7 @@ body::-webkit-scrollbar {
   height: 23rem;
   border-radius: 1rem;
   overflow: auto;
+  scrollbar-width: none;
 }
 
 .tasklist-wrapper::-webkit-scrollbar {
@@ -149,6 +152,7 @@ body::-webkit-scrollbar {
   overflow-x: auto;
   display: flex; 
   text-align: left;
+  scrollbar-width: none;
 }
 
 .input-box fieldset{
