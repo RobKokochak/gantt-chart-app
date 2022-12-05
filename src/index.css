@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
   text-align: left;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
 }
 
 .container h4 {
@@ -83,7 +83,7 @@ body::-webkit-scrollbar {
 .tasklist-wrapper {
   text-align: center;
   height: 23rem;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   overflow: auto;
 }
 
@@ -93,6 +93,7 @@ body::-webkit-scrollbar {
 
 .form-wrapper {
   padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
   border-radius: 1rem;
   overflow: auto;
@@ -129,7 +130,7 @@ body::-webkit-scrollbar {
   padding: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;
-  height: 3.3rem;
+  height: 3.5rem;
 }
 
 .task-details {
