@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Stack, TextField, Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -16,50 +16,38 @@ const defaultValues = {
 	dependencies: null
 }
 
-const MAX_LENGTH = 32;
+const MAX_TASKNAME_LENGTH = 64;
 const MAX_DAYS = 180;
 
 const TaskForm = ({ addTask }) => {
 	const [ task, setTaskValue ] = useState(defaultValues);
-	const [ errorMessage, setErrorMessage ] = useState("");
-
-	// TESTING INPUT VALIDATION
-	// useEffect(() => {
-	// 	// Set errorMessage only if text is equal or bigger than MAX_LENGTH
-	// 	if (task.taskName.length >= MAX_LENGTH) {
-	// 		setErrorMessage(
-	// 		"The input has exceeded the maximum number of characters"
-	// 		);
-	// 	}
-	// 	if (task.duration >= MAX_LENGTH) {
-	// 		setErrorMessage(
-	// 		"The duration is too large"
-	// 		);
-	// 	}
-	//   }, [task]);
-	
-	//   useEffect(() => {
-	// 	// Set empty errorMessage only if text is less than MAX_LENGTH and errorMessage is not empty. avoids setting empty errorMessage if the errorMessage is already empty
-	// 	if (task.taskName.length <= MAX_LENGTH && errorMessage) {
-	// 		setErrorMessage("");
-	// 	}
-	// 	if (task.duration < MAX_DAYS && errorMessage) {
-	// 		setErrorMessage("");
-	// 	}
-	//   }, [task, errorMessage]);
-
+	const [ missingName, setMissingName] = useState("");
+	const [ missingDate, setMissingDate] = useState("");
+	const [ missingDuration, setMissingDuration] = useState("");
 
 	const handleTaskInputChange = e => {
 		const value = e.target.value;
 		setTaskValue({ ...task, [e.target.name]: value });
+		setMissingDate(false);
+		setMissingName(false);
+		setMissingDuration(false);
 	}
 
 	// handles the task list when the add button is pressed
 	const handleSubmit = e => {
-
 		e.preventDefault();
 
-		if ((task.taskName.length <= MAX_LENGTH) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)) { 
+		if(task.taskName == ""){
+			setMissingName(true);
+		}
+		if(task.startDate == null){
+			setMissingDate(true);
+		}
+		if(task.duration == ''){
+			setMissingDuration(true);
+		}
+
+		if((task.taskName.length <= MAX_TASKNAME_LENGTH) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)){
 			// adds the task to the list with a generated unique ID
 			// remove resource if you don't want a rainbow gantt chart
 			addTask({ ...task, id: uuidv4(), resource: uuidv4()});
@@ -67,7 +55,6 @@ const TaskForm = ({ addTask }) => {
 			// reset task form boxes to become empty
 			setTaskValue({ ...task, taskName: '', startDate: null, duration: '' });
 		}
-		// else ERROR to user
 	}
 
 	// debugging statements that output the task and task array to the console
@@ -79,37 +66,47 @@ const TaskForm = ({ addTask }) => {
 				<h4>ADD NEW TASK:</h4>
 				<div>
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<Stack spacing={1}>
+						<Stack className='form-wrapper' spacing={1}>
 							<TextField
-								error={task.taskName.length >= MAX_LENGTH}
-								className='input-box'
+								error={(task.taskName.length >= MAX_TASKNAME_LENGTH) || (missingName)}
+								className="input-box"
 								label="Task Name"
 								name="taskName"
 								value={task.taskName}
 								size="small"
-								onChange={handleTaskInputChange}
-								helperText={errorMessage}
+								onChange={(e) => {
+									handleTaskInputChange(e);
+									setMissingName("");
+								}}
+								helperText={(task.taskName.length >= MAX_TASKNAME_LENGTH) ? "Task name too long!": ""}
 							/>
 							<MobileDatePicker
-								className='input-box'
+								className="input-box"
 								label="Start Date"
 								inputFormat="MM/DD/YYYY"
 								value={task.startDate}
-								onChange={(newValue) => {
-									setTaskValue({ ...task, startDate: newValue });
+								onChange={(e) => {
+									setTaskValue({ ...task, startDate: e });
+									setMissingDate("");
 								}}
-								renderInput={(params) => <TextField size='small'{...params} />}
+								// JSON.stringify HERE ^^^^^^^^^
+								// DHTMLX GANTT CHART: https://github.com/DHTMLX/gantt
+								renderInput={(params) => <TextField {...params} error={missingDate} size='small'/>}
 							/>
 							<TextField
-								error={task.duration >= MAX_DAYS}
+								error={(task.duration > MAX_DAYS) || (task.duration < 0) || (missingDuration)}
 								className='input-box'
 								type="number"
-								label="Duration"
+								InputProps={{ inputProps: { min: 0, max: MAX_DAYS}}}
+								label="Duration (days)"
 								name="duration"
 								value={task.duration}
 								size="small"
-								onChange={handleTaskInputChange}
-								helperText={errorMessage}
+								onChange={(e) => {
+									handleTaskInputChange(e);
+									setMissingDuration("");
+								}}
+								helperText={(task.duration > MAX_DAYS) || (task.duration < 0) ? "Duration must be greater than zero and less than 180 days": ""}
 							/>
 							<div className="right">
 								<Button type="submit" variant="contained" size="small" style={{ borderRadius: 50 }}>ADD TASK</Button>

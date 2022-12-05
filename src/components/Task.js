@@ -1,6 +1,5 @@
 import { IconButton } from '@mui/material';
 import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
-import { Stack } from "@mui/system";
 
 const Task = ({ task, removeTask }) => {
 	const handleRemoveClick = () => removeTask(task.id);
