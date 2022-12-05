@@ -16,7 +16,7 @@ const defaultValues = {
 	dependencies: null
 }
 
-const MAX_TASKNAME_LENGTH = 64;
+const MAX_TASKNAME_LENGTH = 32;
 const MAX_DAYS = 180;
 
 const TaskForm = ({ addTask }) => {
@@ -37,13 +37,13 @@ const TaskForm = ({ addTask }) => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		if(task.taskName == ""){
+		if(task.taskName === ""){
 			setMissingName(true);
 		}
 		if(task.startDate == null){
 			setMissingDate(true);
 		}
-		if(task.duration == ''){
+		if(task.duration === ''){
 			setMissingDuration(true);
 		}
 
@@ -79,6 +79,7 @@ const TaskForm = ({ addTask }) => {
 									setMissingName("");
 								}}
 								helperText={(task.taskName.length >= MAX_TASKNAME_LENGTH) ? "Task name too long!": ""}
+								sx={{ input: { color: '#FFFFFF' } }}
 							/>
 							<MobileDatePicker
 								className="input-box"
@@ -89,9 +90,7 @@ const TaskForm = ({ addTask }) => {
 									setTaskValue({ ...task, startDate: e });
 									setMissingDate("");
 								}}
-								// JSON.stringify HERE ^^^^^^^^^
-								// DHTMLX GANTT CHART: https://github.com/DHTMLX/gantt
-								renderInput={(params) => <TextField {...params} error={missingDate} size='small'/>}
+								renderInput={(params) => <TextField {...params} error={missingDate} size='small' sx={{ input: { color: '#FFFFFF' } }}/>}
 							/>
 							<TextField
 								error={(task.duration > MAX_DAYS) || (task.duration < 0) || (missingDuration)}
@@ -107,6 +106,7 @@ const TaskForm = ({ addTask }) => {
 									setMissingDuration("");
 								}}
 								helperText={(task.duration > MAX_DAYS) || (task.duration < 0) ? "Duration must be greater than zero and less than 180 days": ""}
+								sx={{ input: { color: '#FFFFFF' } }}
 							/>
 							<div className="right">
 								<Button type="submit" variant="contained" size="small" style={{ borderRadius: 50 }}>ADD TASK</Button>

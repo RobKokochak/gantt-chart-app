@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
   text-align: left;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: .5rem;
+  padding-bottom: 1rem;
 }
 
 .container h4 {
@@ -91,12 +91,30 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.gantt-wrapper {
+  background: #FFFFFF;
+  color: #000000;
+  align-items: center;
+  border-radius: 1rem;
+  padding: .5rem;
+}
+
+.gantt-wrapper h1{
+  text-align: center;
+}
+
+.gantt-wrapper p{
+  text-align: center;
+  padding-bottom: .5rem;
+}
+
+.gantt-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 .form-wrapper {
-  padding-top: 5px;
-  padding-bottom: 5px;
   text-align: center;
   border-radius: 1rem;
-  overflow: auto;
 }
 
 .gantt-container {
@@ -106,18 +124,11 @@ body::-webkit-scrollbar {
   backdrop-filter: blur(2rpx);
   border-radius: 1.5rem;
   padding: 1.5rem;
-  height: 28;
 }
 
 .gantt-container h1{
   text-align: center;
-}
-
-.gantt-container p {
-  text-align: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
 }
 
 .task {
@@ -134,9 +145,10 @@ body::-webkit-scrollbar {
 }
 
 .task-details {
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex; 
   text-align: left;
-  max-height: 415px;
-  overflow: hidden;
 }
 
 .input-box fieldset{
