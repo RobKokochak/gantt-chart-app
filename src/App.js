@@ -54,9 +54,8 @@ const App = () => {
           </Grid>
           <Grid item xs={12}>
             <div className="gantt-container">
-              <h1>{title}</h1>
-              <p>{author}</p>
-              <Gantt tasks={tasks}/>
+              <h1>Gantt Chart:</h1>
+              <Gantt tasks={tasks} title={title} author={author}/>
             </div>
           </Grid>
         </Grid>
