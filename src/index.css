@@ -91,6 +91,13 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.form-wrapper {
+  padding-top: 5px;
+  text-align: center;
+  border-radius: 1rem;
+  overflow: auto;
+}
+
 .gantt-container {
   text-align: center;
   background: #5C678C66;

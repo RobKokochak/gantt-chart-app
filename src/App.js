@@ -1,10 +1,10 @@
-import Gantt from "./components/Gantt";
+import Gantt from './components/Gantt';
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import ProjectDetails from "./components/ProjectDetails"
 import { Grid } from "@mui/material";
 import { Stack } from "@mui/system";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const LOCAL_STORAGE_KEY = 'react-gantt-chart-tasks';
 
@@ -56,7 +56,7 @@ const App = () => {
             <div className="gantt-container">
               <h1>{title}</h1>
               <p>{author}</p>
-              <Gantt tasks={tasks} title={title} author={author}/>
+              <Gantt tasks={tasks}/>
             </div>
           </Grid>
         </Grid>
