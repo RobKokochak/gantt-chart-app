@@ -176,3 +176,28 @@ body::-webkit-scrollbar {
   bottom: 0;
   right: 0;
 }
+
+/* responsive and mobile styles */
+
+@media only screen and (max-width: 600px) {
+
+  .content {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  #project-details-container {
+    height: 33em;
+  }
+
+  .container p {
+    text-align: center;
+  }
+
+  .task {
+    padding: 1em;
+  }
+}
