@@ -141,9 +141,7 @@ body::-webkit-scrollbar {
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding: 1.5rem;
   height: 3.5rem;
 }
 
@@ -195,9 +193,5 @@ body::-webkit-scrollbar {
 
   .container p {
     text-align: center;
-  }
-
-  .task {
-    padding: 1em;
   }
 }
