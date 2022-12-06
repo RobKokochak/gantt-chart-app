@@ -23,6 +23,7 @@ body::-webkit-scrollbar {
   padding-left: 10%;
   padding-right: 10%;
   scrollbar-width: none;
+  min-width: 50rem;
 }
 
 .container {
@@ -49,7 +50,7 @@ body::-webkit-scrollbar {
   text-align: left;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: .9rem;
 }
 
 .container h4 {
@@ -144,15 +145,20 @@ body::-webkit-scrollbar {
   padding: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;
-  height: 3.5rem;
+  height: 3.6rem;
 }
 
 .task-details {
   white-space: nowrap;
-  overflow-x: auto;
+  overflow: auto;
+  overflow-y: hidden;
   display: flex; 
   text-align: left;
   scrollbar-width: none;
+}
+
+.task-details::-webkit-scrollbar {
+  display: none;
 }
 
 .input-box fieldset{
