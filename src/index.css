@@ -145,7 +145,7 @@ body::-webkit-scrollbar {
   padding: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;
-  height: 3.6rem;
+  height: 3.8rem;
 }
 
 .task-details {
@@ -181,4 +181,25 @@ body::-webkit-scrollbar {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+/* responsive and mobile styles */
+
+@media only screen and (max-width: 600px) {
+
+  .content {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  #project-details-container {
+    height: 33em;
+  }
+
+  .container p {
+    text-align: center;
+  }
 }
