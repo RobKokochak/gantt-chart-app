@@ -141,9 +141,7 @@ body::-webkit-scrollbar {
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding: 1.5rem;
   height: 3.5rem;
 }
 
@@ -175,4 +173,25 @@ body::-webkit-scrollbar {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+/* responsive and mobile styles */
+
+@media only screen and (max-width: 600px) {
+
+  .content {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  #project-details-container {
+    height: 33em;
+  }
+
+  .container p {
+    text-align: center;
+  }
 }

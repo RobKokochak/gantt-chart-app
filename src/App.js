@@ -36,8 +36,8 @@ const App = () => {
     <div className="App">
       <div className="content">
         <Grid className="whole-grid" container direction='row' spacing={1} alignItems="stretch">
-          <Grid item xs={6}>
-            <div className="container">
+          <Grid item xs={12} md={6}>
+            <div className="container" id="project-details-container">
             <h1>Gantt Chart Maker</h1>
             <p>This tool allows you to generate a Gantt chart given a set of tasks, start dates, and durations. Fill out the information below to get started.</p>
               <Stack container="true" spacing={1.5}>
@@ -46,7 +46,7 @@ const App = () => {
               </Stack>
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div className="container">
               <h4>TASKS: {tasks.length}</h4>
               <TaskList tasks={tasks} removeTask={removeTask} removeAllTasks={removeAllTasks}/>
