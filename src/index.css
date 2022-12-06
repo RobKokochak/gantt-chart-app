@@ -23,7 +23,6 @@ body::-webkit-scrollbar {
   padding-left: 10%;
   padding-right: 10%;
   scrollbar-width: none;
-  min-width: 50rem;
 }
 
 .container {
