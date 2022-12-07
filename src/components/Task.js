@@ -1,5 +1,5 @@
 import { IconButton } from '@mui/material';
-import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 const Task = ({ task, removeTask }) => {
 	const handleRemoveClick = () => removeTask(task.id);
@@ -22,7 +22,7 @@ const Task = ({ task, removeTask }) => {
 			</div>
 			<div className="vertical-center">
 				<IconButton aria-label="delete" onClick={handleRemoveClick} size="large">
-					<RemoveCircleRoundedIcon fontSize="inherit" />
+					<RemoveCircleIcon sx={{ color: "white" }} fontSize="inherit" />
 				</IconButton>
 			</div>
 		</div>
