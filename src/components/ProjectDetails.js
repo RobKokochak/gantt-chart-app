@@ -18,8 +18,7 @@ const UserInput = ({ title, setTitle, author, setAuthor }) => {
               variant="outlined"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              inputProps={{ maxLength: MAX_TITLE_LENGTH }}
-              sx={{ input: { color: '#FFFFFF' } }}/>
+              inputProps={{ maxLength: MAX_TITLE_LENGTH }}/>
             <TextField 
               size="small"
               className="input-box"
@@ -28,8 +27,7 @@ const UserInput = ({ title, setTitle, author, setAuthor }) => {
               variant="outlined"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
-              inputProps={{ maxLength: MAX_AUTHOR_LENGTH }}
-              sx={{ input: { color: '#FFFFFF' } }} />
+              inputProps={{ maxLength: MAX_AUTHOR_LENGTH }}/>
           </Stack>
         </Grid>
       </Grid>

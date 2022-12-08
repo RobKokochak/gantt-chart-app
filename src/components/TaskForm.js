@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Stack, TextField, Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 const defaultValues = {
 	id: "",
@@ -28,8 +28,10 @@ const TaskForm = ({ addTask }) => {
 	const handleTaskInputChange = e => {
 		const value = e.target.value;
 		setTaskValue({ ...task, [e.target.name]: value });
-		setMissingDate(false);
+
+		// reset missing info errors on next input change
 		setMissingName(false);
+		setMissingDate(false);
 		setMissingDuration(false);
 	}
 
@@ -37,17 +39,18 @@ const TaskForm = ({ addTask }) => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		if(task.taskName === ""){
+		// used for showing error in text box
+		if(task.taskName.length === 0){
 			setMissingName(true);
 		}
 		if(task.startDate == null){
 			setMissingDate(true);
 		}
-		if(task.duration === ''){
+		if(task.duration === ""){
 			setMissingDuration(true);
 		}
 
-		if((task.taskName.length <= MAX_TASKNAME_LENGTH) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)){
+		if(((task.taskName.length !== 0) && (task.taskName.length <= MAX_TASKNAME_LENGTH)) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)){
 			// adds the task to the list with a generated unique ID
 			// remove resource if you don't want a rainbow gantt chart
 			addTask({ ...task, id: uuidv4(), resource: uuidv4()});
@@ -79,9 +82,9 @@ const TaskForm = ({ addTask }) => {
 									setMissingName("");
 								}}
 								helperText={(task.taskName.length >= MAX_TASKNAME_LENGTH) ? "Task name too long!": ""}
-								sx={{ input: { color: '#FFFFFF' } }}
 							/>
-							<DatePicker
+							<MobileDatePicker
+								closeOnSelect
 								className="input-box"
 								label="Start Date"
 								inputFormat="MM/DD/YYYY"
@@ -90,7 +93,7 @@ const TaskForm = ({ addTask }) => {
 									setTaskValue({ ...task, startDate: e });
 									setMissingDate("");
 								}}
-								renderInput={(params) => <TextField {...params} error={missingDate} size='small' sx={{ input: { color: '#FFFFFF' } }}/>}
+								renderInput={(params) => <TextField {...params} error={missingDate} size='small'/>}
 							/>
 							<TextField
 								error={(task.duration > MAX_DAYS) || (task.duration < 0) || (missingDuration)}
@@ -106,10 +109,9 @@ const TaskForm = ({ addTask }) => {
 									setMissingDuration("");
 								}}
 								helperText={(task.duration > MAX_DAYS) || (task.duration < 0) ? "Duration must be greater than zero and less than 180 days": ""}
-								sx={{ input: { color: '#FFFFFF' } }}
 							/>
 							<div className="right">
-								<Button type="submit" variant="contained" size="small" style={{ borderRadius: 50 }}>ADD TASK</Button>
+								<Button type="submit" variant="contained" size="small" sx={{ palette: {mode: 'dark',}, borderRadius: 50 }}>ADD TASK</Button>
 							</div>
 						</Stack>	
 					</LocalizationProvider>
