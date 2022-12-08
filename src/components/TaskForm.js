@@ -49,6 +49,8 @@ const TaskForm = ({ addTask }) => {
 			setMissingDuration(true);
 		}
 
+		console.log(task.startDate);
+
 		if(((missingName === false) && (task.taskName.length <= MAX_TASKNAME_LENGTH)) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)){
 			// adds the task to the list with a generated unique ID
 			// remove resource if you don't want a rainbow gantt chart
