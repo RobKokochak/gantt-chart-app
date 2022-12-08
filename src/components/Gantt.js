@@ -65,7 +65,7 @@ const GanttChart = ({ tasks, title, author }) => {
   const data = [columns, ...tasksObjectsToGantt];
 
   const options = {
-    height: 45 + (tasks.length * 40),
+    height: 120 + (tasks.length * 40),
     backgroundColor: {
     },
     gantt: {
