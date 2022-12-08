@@ -56,30 +56,34 @@ const GanttChart = ({ tasks, title, author }) => {
         arr[i][4] = new Date(parts[0], parts[1] - 1, parts[2]);
         temp = arr[i][4];
         temp.setDate(temp.getDate() + parseInt(arr[i][5]));
-        arr[i][4]  = temp;
+        arr[i][4]  = new Date(temp);
       }
     };
   }
+  
+  durationToEndDate(tasksObjectsToGantt);
 
-  const endDates = tasksObjectsToGantt.sort(function compare(a, b) {
-		var dateA = new Date(a[4]);
-		var dateB = new Date(b[4]);
-		return dateA - dateB;
-	  });
+  if(tasksObjectsToGantt.length > 0){
+    // sorted tasks by endDate
+    const endDates = tasksObjectsToGantt.sort(function compare(a, b) {
+      console.log(a[4]);
+      var dateA = new Date(a[4]);
+      var dateB = new Date(b[4]);
+      return dateA - dateB;
+      });
 
-  let finalDate = endDates[endDates.length-1][4];
+    let projectStartDate = tasksObjectsToGantt[0][3];
+    let projectEndDate = endDates[endDates.length-1][4];
 
-  console.log("ENDDATE SORTED",endDates);
-  console.log("furthest date", finalDate);
+    //projectLength = daysBetweenDates(projectStartDate, projectEndDate);
 
-  // converting days to milliseconds for gantt chart to read
-  // const convertDurationToGanttFormat = (arr) => {
-  //   if (arr.length > 0){
-  //     for (let i = 0; i < arr.length; i++){
-	// 		  arr[i][5] = arr[i][5] * 24 * 60 * 60 * 1000;
-  //     }
-  //   }
-  // }
+
+    console.log("ENDDATE SORTED", endDates);
+    console.log("earliest date", projectStartDate);
+    console.log("furthest date", projectEndDate);
+
+    //console.log("PROJECT LENGTH!!!:", projectLength);
+  }
 
   const removeDuration = (arr) => {
     if (arr.length > 0){
@@ -89,9 +93,7 @@ const GanttChart = ({ tasks, title, author }) => {
     };
   }
 
-  durationToEndDate(tasksObjectsToGantt);
   convertDateToGanttFormat(tasksObjectsToGantt);
-  //convertDurationToGanttFormat(tasksObjectsToGantt);
   removeDuration(tasksObjectsToGantt);
 
   console.log(tasksObjectsToGantt);
