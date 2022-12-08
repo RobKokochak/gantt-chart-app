@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Stack, TextField, Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const defaultValues = {
 	id: "",
@@ -81,7 +81,7 @@ const TaskForm = ({ addTask }) => {
 								helperText={(task.taskName.length >= MAX_TASKNAME_LENGTH) ? "Task name too long!": ""}
 								sx={{ input: { color: '#FFFFFF' } }}
 							/>
-							<MobileDatePicker
+							<DatePicker
 								className="input-box"
 								label="Start Date"
 								inputFormat="MM/DD/YYYY"
