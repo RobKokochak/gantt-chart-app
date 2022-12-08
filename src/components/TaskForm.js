@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Stack, TextField, Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 const defaultValues = {
 	id: "",
@@ -28,8 +28,10 @@ const TaskForm = ({ addTask }) => {
 	const handleTaskInputChange = e => {
 		const value = e.target.value;
 		setTaskValue({ ...task, [e.target.name]: value });
+		if(task.taskName.length !== 0){
+			setMissingName(false);
+		}
 		setMissingDate(false);
-		setMissingName(false);
 		setMissingDuration(false);
 	}
 
@@ -37,17 +39,17 @@ const TaskForm = ({ addTask }) => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		if(task.taskName === ""){
+		if(task.taskName.length === 0){
 			setMissingName(true);
 		}
 		if(task.startDate == null){
 			setMissingDate(true);
 		}
-		if(task.duration === ''){
+		if(task.duration === ""){
 			setMissingDuration(true);
 		}
 
-		if((task.taskName.length <= MAX_TASKNAME_LENGTH) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)){
+		if(((missingName === false) && (task.taskName.length <= MAX_TASKNAME_LENGTH)) && (task.startDate != null) && (0 < task.duration && task.duration <= MAX_DAYS)){
 			// adds the task to the list with a generated unique ID
 			// remove resource if you don't want a rainbow gantt chart
 			addTask({ ...task, id: uuidv4(), resource: uuidv4()});
@@ -81,7 +83,7 @@ const TaskForm = ({ addTask }) => {
 								helperText={(task.taskName.length >= MAX_TASKNAME_LENGTH) ? "Task name too long!": ""}
 								sx={{ input: { color: '#FFFFFF' } }}
 							/>
-							<DatePicker
+							<MobileDatePicker
 								className="input-box"
 								label="Start Date"
 								inputFormat="MM/DD/YYYY"
