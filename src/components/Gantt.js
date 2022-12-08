@@ -6,7 +6,7 @@ import html2canvas from "html2canvas";
 const daysBetweenDates = (a,b) => {
   let milliseconds = b.getTime() - a.getTime();
   let days = milliseconds / (1000 * 3600 * 24);
-  return days;
+  return Math.ceil(days);
 }
 
 const GanttChart = ({ tasks, title, author }) => {
@@ -64,25 +64,28 @@ const GanttChart = ({ tasks, title, author }) => {
   durationToEndDate(tasksObjectsToGantt);
 
   if(tasksObjectsToGantt.length > 0){
-    // sorted tasks by endDate
-    const endDates = tasksObjectsToGantt.sort(function compare(a, b) {
+    // creating new array to sort data by endDate
+    const endDates = tasksObjectsToGantt;
+
+    // sorting new endDates array
+    endDates.sort(function compare(a, b) {
       console.log(a[4]);
-      var dateA = new Date(a[4]);
-      var dateB = new Date(b[4]);
+      let dateA = new Date(a[4]);
+      let dateB = new Date(b[4]);
       return dateA - dateB;
       });
 
-    let projectStartDate = tasksObjectsToGantt[0][3];
-    let projectEndDate = endDates[endDates.length-1][4];
+    let projectStartDate = new Date(tasksObjectsToGantt[0][3]);         // projectStartDate is the first start day in the tasksObjectsToGantt array
+    let projectEndDate = new Date(endDates[endDates.length-1][4]);      // projectEndDate is the last end day in the endDates array.
 
-    //projectLength = daysBetweenDates(projectStartDate, projectEndDate);
+    projectLength = daysBetweenDates(projectStartDate, projectEndDate); // projectLength is the amount of days between the start date and end date
 
 
     console.log("ENDDATE SORTED", endDates);
     console.log("earliest date", projectStartDate);
     console.log("furthest date", projectEndDate);
 
-    //console.log("PROJECT LENGTH!!!:", projectLength);
+    console.log("PROJECT LENGTH!!!:", projectLength);
   }
 
   const removeDuration = (arr) => {
@@ -98,23 +101,23 @@ const GanttChart = ({ tasks, title, author }) => {
 
   console.log(tasksObjectsToGantt);
 
-  if(tasks.length === 1){
-    // // first start date be the duration of the first task if only one
-    // let firstStartDate = tasksObjectsToGantt[0][5];
+  // if(tasks.length === 1){
+  //   // // first start date be the duration of the first task if only one
+  //   // let firstStartDate = tasksObjectsToGantt[0][5];
 
-    // // convert start date from milliseconds to days.
-    // projectLength = firstStartDate / (1000 * 3600 * 24);
-  }
-  if(tasks.length >= 2){
-    // // last start date
-    // let lastStartDate = tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3];
+  //   // // convert start date from milliseconds to days.
+  //   // projectLength = firstStartDate / (1000 * 3600 * 24);
+  // }
+  // if(tasks.length >= 2){
+  //   // // last start date
+  //   // let lastStartDate = tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3];
 
-    // projectLength = daysBetweenDates(tasksObjectsToGantt[0][3],tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]);
+  //   // projectLength = daysBetweenDates(tasksObjectsToGantt[0][3],tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]);
 
-    // console.log(tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]);
-    // console.log(daysBetweenDates(tasksObjectsToGantt[0][3],tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]));
-    // console.log(tasksObjectsToGantt[0][5] / (1000 * 3600 * 24));
-  }
+  //   // console.log(tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]);
+  //   // console.log(daysBetweenDates(tasksObjectsToGantt[0][3],tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]));
+  //   // console.log(tasksObjectsToGantt[0][5] / (1000 * 3600 * 24));
+  // }
 
 
   const columns = [
