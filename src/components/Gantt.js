@@ -3,7 +3,14 @@ import { Chart } from "react-google-charts";
 import { Button, Stack } from '@mui/material';
 import html2canvas from "html2canvas";
 
+const daysBetweenDates = (a,b) => {
+  let milliseconds = b.getTime() - a.getTime();
+  let days = milliseconds / (1000 * 3600 * 24);
+  return days;
+}
+
 const GanttChart = ({ tasks, title, author }) => {
+  let projectLength = 0;
   const printRef = React.useRef();
 
   const handleDownloadImage = async () => {
@@ -39,17 +46,74 @@ const GanttChart = ({ tasks, title, author }) => {
     };
   }
 
-  const convertDurationToGanttFormat = (arr) => {
+  // converting end date
+  const durationToEndDate = (arr) => {
     if (arr.length > 0){
       for (let i = 0; i < arr.length; i++){
-			  arr[i][5] = arr[i][5] * 24 * 60 * 60 * 1000;
+        let temp = arr[i][4];
+        temp = JSON.stringify(temp).slice(1, 11);
+        let parts = temp.split('-');
+        arr[i][4] = new Date(parts[0], parts[1] - 1, parts[2]);
+        temp = arr[i][4];
+        temp.setDate(temp.getDate() + parseInt(arr[i][5]));
+        arr[i][4]  = temp;
       }
-    }
+    };
   }
 
-  convertDurationToGanttFormat(tasksObjectsToGantt);
+  const endDates = tasksObjectsToGantt.sort(function compare(a, b) {
+		var dateA = new Date(a[4]);
+		var dateB = new Date(b[4]);
+		return dateA - dateB;
+	  });
+
+  let finalDate = endDates[endDates.length-1][4];
+
+  console.log("ENDDATE SORTED",endDates);
+  console.log("furthest date", finalDate);
+
+  // converting days to milliseconds for gantt chart to read
+  // const convertDurationToGanttFormat = (arr) => {
+  //   if (arr.length > 0){
+  //     for (let i = 0; i < arr.length; i++){
+	// 		  arr[i][5] = arr[i][5] * 24 * 60 * 60 * 1000;
+  //     }
+  //   }
+  // }
+
+  const removeDuration = (arr) => {
+    if (arr.length > 0){
+      for (let i = 0; i < arr.length; i++){
+        arr[i][5] = "";
+      }
+    };
+  }
+
+  durationToEndDate(tasksObjectsToGantt);
   convertDateToGanttFormat(tasksObjectsToGantt);
+  //convertDurationToGanttFormat(tasksObjectsToGantt);
+  removeDuration(tasksObjectsToGantt);
+
   console.log(tasksObjectsToGantt);
+
+  if(tasks.length === 1){
+    // // first start date be the duration of the first task if only one
+    // let firstStartDate = tasksObjectsToGantt[0][5];
+
+    // // convert start date from milliseconds to days.
+    // projectLength = firstStartDate / (1000 * 3600 * 24);
+  }
+  if(tasks.length >= 2){
+    // // last start date
+    // let lastStartDate = tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3];
+
+    // projectLength = daysBetweenDates(tasksObjectsToGantt[0][3],tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]);
+
+    // console.log(tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]);
+    // console.log(daysBetweenDates(tasksObjectsToGantt[0][3],tasksObjectsToGantt[tasksObjectsToGantt.length - 1][3]));
+    // console.log(tasksObjectsToGantt[0][5] / (1000 * 3600 * 24));
+  }
+
 
   const columns = [
     { type: "string", label: "Task ID" },
@@ -65,7 +129,7 @@ const GanttChart = ({ tasks, title, author }) => {
   const data = [columns, ...tasksObjectsToGantt];
 
   const options = {
-    height: 45 + (tasks.length * 40),
+    height: 120 + (tasks.length * 40),
     backgroundColor: {
     },
     gantt: {
@@ -88,6 +152,7 @@ const GanttChart = ({ tasks, title, author }) => {
             <div>
               <h1>{title}</h1>
               <p>{author}</p>
+              <p>TOTAL PROJECT LENGTH: {projectLength} days</p>
             </div>
             <Chart
               id="report"
@@ -99,7 +164,7 @@ const GanttChart = ({ tasks, title, author }) => {
             />
           </div>
           <div className="right">
-            <Button onClick={handleDownloadImage} type="button" variant="contained" size="small" style={{ borderRadius: 50 }}>DOWNLOAD JPG</Button>
+            <Button onClick={handleDownloadImage} type="button" variant="contained" size="small" style={{ borderRadius: 50 }}>DOWNLOAD IMAGE</Button>
 				  </div>
         </Stack>
       </div>
