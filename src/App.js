@@ -2,11 +2,18 @@ import Gantt from './components/Gantt';
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import ProjectDetails from "./components/ProjectDetails"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Grid } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState, useEffect } from "react";
 
 const LOCAL_STORAGE_KEY = 'react-gantt-chart-tasks';
+
+const darkTheme = createTheme({
+  palette: {
+      mode: 'dark',
+  }
+});
 
 const App = () => {
   const [title, setTitle] = useState('Project Title');
@@ -34,6 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <ThemeProvider theme={darkTheme}>
       <div className="content">
         <Grid className="whole-grid" container direction='row' spacing={1} alignItems="stretch">
           <Grid item xs={12} md={6}>
@@ -60,6 +68,7 @@ const App = () => {
           </Grid>
         </Grid>
       </div>
+      </ThemeProvider>
     </div>
   );
 }

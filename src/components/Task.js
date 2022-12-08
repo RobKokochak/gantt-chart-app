@@ -22,7 +22,7 @@ const Task = ({ task, removeTask }) => {
 			</div>
 			<div className="vertical-center">
 				<IconButton aria-label="delete" onClick={handleRemoveClick} size="large">
-					<RemoveCircleIcon sx={{ color: "white" }} fontSize="inherit" />
+					<RemoveCircleIcon fontSize="inherit" />
 				</IconButton>
 			</div>
 		</div>
