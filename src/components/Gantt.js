@@ -64,18 +64,19 @@ const GanttChart = ({ tasks, title, author }) => {
   durationToEndDate(tasksObjectsToGantt);
 
   if(tasksObjectsToGantt.length > 0){
+    let projectStartDate = new Date(tasksObjectsToGantt[0][3]);         // projectStartDate is the first start day in the tasksObjectsToGantt array
+    
     // creating new array to sort data by endDate
     const endDates = tasksObjectsToGantt;
-
+    
     // sorting new endDates array
     endDates.sort(function compare(a, b) {
       console.log(a[4]);
       let dateA = new Date(a[4]);
       let dateB = new Date(b[4]);
       return dateA - dateB;
-      });
-
-    let projectStartDate = new Date(tasksObjectsToGantt[0][3]);         // projectStartDate is the first start day in the tasksObjectsToGantt array
+    });
+    
     let projectEndDate = new Date(endDates[endDates.length-1][4]);      // projectEndDate is the last end day in the endDates array.
 
     projectLength = daysBetweenDates(projectStartDate, projectEndDate); // projectLength is the amount of days between the start date and end date
@@ -157,7 +158,6 @@ const GanttChart = ({ tasks, title, author }) => {
             <div>
               <h1>{title}</h1>
               <p>{author}</p>
-              <p>TOTAL PROJECT LENGTH: {projectLength} days</p>
             </div>
             <Chart
               id="report"
@@ -167,6 +167,7 @@ const GanttChart = ({ tasks, title, author }) => {
               data={data}
               options={options}
             />
+          <h5>TOTAL PROJECT LENGTH: {projectLength} DAYS</h5>
           </div>
           <div className="right">
             <Button onClick={handleDownloadImage} type="button" variant="contained" size="small" style={{ borderRadius: 50 }}>DOWNLOAD IMAGE</Button>
