@@ -56,7 +56,7 @@ const TaskForm = ({ addTask }) => {
 			addTask({ ...task, id: uuidv4(), resource: uuidv4()});
 
 			// reset task form boxes to become empty
-			setTaskValue({ ...task, taskName: '', startDate: null, duration: '' });
+			setTaskValue({ ...task, taskName: '', startDate: null, endDate: null, duration: '' });
 		}
 	}
 
@@ -90,7 +90,7 @@ const TaskForm = ({ addTask }) => {
 								inputFormat="MM/DD/YYYY"
 								value={task.startDate}
 								onChange={(e) => {
-									setTaskValue({ ...task, startDate: e });
+									setTaskValue({ ...task, startDate: e, endDate: e});
 									setMissingDate("");
 								}}
 								renderInput={(params) => <TextField {...params} error={missingDate} size='small'/>}
