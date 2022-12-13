@@ -60,9 +60,6 @@ const TaskForm = ({ addTask }) => {
 		}
 	}
 
-	// debugging statements that output the task and task array to the console
-	console.log(task);
-
 	return (
 		<div className="inner-container">
 			<form noValidate autoComplete='off' onSubmit={handleSubmit}>
