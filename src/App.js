@@ -1,3 +1,4 @@
+import About from './components/About'
 import Gantt from './components/Gantt';
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
@@ -67,6 +68,9 @@ const App = () => {
             </div>
           </Grid>
         </Grid>
+        <div className="credits">
+          <About/>
+        </div>
       </div>
       </ThemeProvider>
     </div>

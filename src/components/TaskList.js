@@ -11,8 +11,6 @@ const TaskList = ({ tasks, removeTask, removeAllTasks }) => {
 		return dateA - dateB;
 	  });
 
-	console.log(tasks);
-	
 	if (tasks.length > 0) {
 		return (
 			<Stack className="tasklist-container" spacing={1}>
