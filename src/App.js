@@ -47,7 +47,7 @@ const App = () => {
         <Grid className="whole-grid" container direction='row' spacing={1} alignItems="stretch">
           <Grid item xs={12} md={6}>
             <div className="container" id="project-details-container">
-            <h1>Gantt Chart Maker</h1>
+            <h1>Gantt Chart Tool</h1>
             <p>This tool allows you to generate a Gantt chart given a set of tasks, start dates, and durations. Fill out the information below to get started.</p>
               <Stack container="true" spacing={1.5}>
                 <ProjectDetails title={title} setTitle={setTitle} author={author} setAuthor={setAuthor}/>
