@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gantt-chart-app/static/css/main.7a81698a.css",
-    "main.js": "/gantt-chart-app/static/js/main.cd92fd0f.js",
+    "main.js": "/gantt-chart-app/static/js/main.c4ca1774.js",
     "index.html": "/gantt-chart-app/index.html",
     "main.7a81698a.css.map": "/gantt-chart-app/static/css/main.7a81698a.css.map",
-    "main.cd92fd0f.js.map": "/gantt-chart-app/static/js/main.cd92fd0f.js.map"
+    "main.c4ca1774.js.map": "/gantt-chart-app/static/js/main.c4ca1774.js.map"
   },
   "entrypoints": [
     "static/css/main.7a81698a.css",
-    "static/js/main.cd92fd0f.js"
+    "static/js/main.c4ca1774.js"
   ]
 }
